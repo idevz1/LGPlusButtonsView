@@ -133,7 +133,6 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonDescriptionsPosition)
 
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = YES;
-
         // -----
 
         _coverView = [UIView new];
@@ -144,6 +143,7 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonDescriptionsPosition)
         _contentView = [WrapperView new];
         _contentView.backgroundColor = [UIColor clearColor];
         _contentView.userInteractionEnabled = YES;
+
         [self addSubview:_contentView];
 
         _buttonsContentView = [WrapperView new];
@@ -188,6 +188,12 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonDescriptionsPosition)
             [_buttonWrapperViewsArray2 addObject:wrapperView2];
 
             LGPlusButton *button = [LGPlusButton new];
+      
+            if (i==0){
+                button.layer.borderColor = [UIColor whiteColor].CGColor;
+                button.layer.borderWidth = 1.0;
+            }
+            
             button.tag = i;
             [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
             if (showAfterInit) button.showing = ((firstButtonIsPlusButton && i == 0) || !firstButtonIsPlusButton);
@@ -1018,7 +1024,7 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonDescriptionsPosition)
     buttonsContentViewOrigin.x += _offset.x;
     buttonsContentViewOrigin.y += _offset.y;
 
-    CGRect buttonsContentViewFrame = CGRectMake(buttonsContentViewOrigin.x, buttonsContentViewOrigin.y, buttonsContentViewSize.width, buttonsContentViewSize.height);
+    CGRect buttonsContentViewFrame = CGRectMake(buttonsContentViewOrigin.x, buttonsContentViewOrigin.y+54, buttonsContentViewSize.width, buttonsContentViewSize.height);
     if ([UIScreen mainScreen].scale == 1.f)
         buttonsContentViewFrame = CGRectIntegral(buttonsContentViewFrame);
     _buttonsContentView.frame = buttonsContentViewFrame;

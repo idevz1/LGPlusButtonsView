@@ -59,6 +59,7 @@
     {
         self.backgroundColor = [UIColor clearColor];
         self.layer.anchorPoint = CGPointMake(0.5, 0.5);
+
         self.layer.masksToBounds = YES;
         self.imageView.contentMode = UIViewContentModeCenter;
 
@@ -371,7 +372,7 @@
         [_layerCornerRadiusDictionary setObject:cornerRadiusNumber forKey:[LGPlusButtonsViewShared stringFromOrientation:LGPlusButtonsViewOrientationLandscape]];
     }
 
-    [self setNeedsLayout];
+    [self setNeedsLayout]; 
 }
 
 - (CGFloat)layerCornerRadiusForOrientation:(LGPlusButtonsViewOrientation)orientation;
